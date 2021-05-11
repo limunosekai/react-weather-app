@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { fetchWeather } from '../actions/index';
 
 function searchBar() {
+  const dispatch = useDispatch();
+
   const [term, setTerm] = useState('');
 
   const onInputChange = (e) => {
@@ -9,6 +13,7 @@ function searchBar() {
 
   const onFormSubmit = (e) => {
     e.preventDefault();
+    dispatch(fetchWeather(term));
   };
 
   return (
