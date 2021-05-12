@@ -1,10 +1,10 @@
 import * as actions from '../actions/type';
 
-export default function (state = null, action) {
+export default function (state = [], action) {
   switch (action.type) {
     case actions.FETCH_WEATHER:
-      return {
-        ...state,
-      };
+      return [...state, action.payload.data];
+    default:
+      return state;
   }
 }
