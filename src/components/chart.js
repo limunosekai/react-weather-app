@@ -12,7 +12,7 @@ function chart(props) {
   };
 
   return (
-    <div>
+    <div style={{ textAlign: 'center' }}>
       <Sparklines height={120} width={180} data={props.data}>
         <SparklinesLine color={props.color} />
         <SparklinesReferenceLine type='avg' />

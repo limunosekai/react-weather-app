@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import Chart from '../components/chart';
 import _ from 'lodash';
+import GoogleMap from '../components/googleMap';
 
 function weatherList() {
   const weather = useSelector((state) => state.weather);
@@ -14,10 +15,13 @@ function weatherList() {
     );
     const humidities = cityData.list.map((weather) => weather.main.humidity);
     const pressueres = cityData.list.map((weather) => weather.main.pressure);
+    const { lon, lat } = cityData.city.coord;
 
     return (
       <tr key={name}>
-        <td>{name}</td>
+        <td>
+          <GoogleMap lon={lon} lat={lat} />
+        </td>
         <td>
           <Chart data={temps} color='blue' units='℃' />
         </td>
@@ -33,6 +37,12 @@ function weatherList() {
 
   return (
     <table className='table table-hover'>
+      <colgroup>
+        <col width='25%' />
+        <col width='25%' />
+        <col width='25%' />
+        <col width='25%' />
+      </colgroup>
       <thead>
         <tr>
           <th>City</th>

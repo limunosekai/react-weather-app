@@ -14,6 +14,7 @@ function searchBar() {
   const onFormSubmit = (e) => {
     e.preventDefault();
     dispatch(fetchWeather(term));
+    setTerm('');
   };
 
   return (
